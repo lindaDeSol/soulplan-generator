@@ -1,0 +1,49 @@
+<svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Keter -->
+  <circle cx="12" cy="2" r="1.5" fill="#FF4081"/>
+  <!-- Chokhmah -->
+  <circle cx="7" cy="5" r="1.5" fill="#FF4081"/>
+  <!-- Binah -->
+  <circle cx="17" cy="5" r="1.5" fill="#FF4081"/>
+  <!-- Da'at (optional, sometimes not depicted) -->
+  <!-- Chesed -->
+  <circle cx="5" cy="9" r="1.5" fill="#FF4081"/>
+  <!-- Gevurah -->
+  <circle cx="19" cy="9" r="1.5" fill="#FF4081"/>
+  <!-- Tiferet -->
+  <circle cx="12" cy="12" r="1.5" fill="#FF4081"/>
+  <!-- Netzach -->
+  <circle cx="7" cy="15" r="1.5" fill="#FF4081"/>
+  <!-- Hod -->
+  <circle cx="17" cy="15" r="1.5" fill="#FF4081"/>
+  <!-- Yesod -->
+  <circle cx="12" cy="18" r="1.5" fill="#FF4081"/>
+  <!-- Malkuth -->
+  <circle cx="12" cy="22" r="1.5" fill="#FF4081"/>
+  
+  <!-- Lines connecting the Sefirot -->
+  <!-- Keter to Chokhmah -->
+  <line x1="12" y1="2" x2="7" y2="5" stroke="#FF4081" stroke-width="2"/>
+  <!-- Keter to Binah -->
+  <line x1="12" y1="2" x2="17" y2="5" stroke="#FF4081" stroke-width="2"/>
+  <!-- Chokhmah to Binah -->
+  <line x1="7" y1="5" x2="17" y2="5" stroke="#FF4081" stroke-width="2"/>
+  <!-- Chokhmah to Chesed -->
+  <line x1="7" y1="5" x2="5" y2="9" stroke="#FF4081" stroke-width="2"/>
+  <!-- Binah to Gevurah -->
+  <line x1="17" y1="5" x2="19" y2="9" stroke="#FF4081" stroke-width="2"/>
+  <!-- Chesed to Tiferet -->
+  <line x1="5" y1="9" x2="12" y2="12" stroke="#FF4081" stroke-width="2"/>
+  <!-- Gevurah to Tiferet -->
+  <line x1="19" y1="9" x2="12" y2="12" stroke="#FF4081" stroke-width="2"/>
+  <!-- Tiferet to Netzach -->
+  <line x1="12" y1="12" x2="7" y2="15" stroke="#FF4081" stroke-width="2"/>
+  <!-- Tiferet to Hod -->
+  <line x1="12" y1="12" x2="17" y2="15" stroke="#FF4081" stroke-width="2"/>
+  <!-- Netzach to Yesod -->
+  <line x1="7" y1="15" x2="12" y2="18" stroke="#FF4081" stroke-width="2"/>
+  <!-- Hod to Yesod -->
+  <line x1="17" y1="15" x2="12" y2="18" stroke="#FF4081" stroke-width="2"/>
+  <!-- Yesod to Malkuth -->
+  <line x1="12" y1="18" x2="12" y2="22" stroke="#FF4081" stroke-width="2"/>
+</svg>
