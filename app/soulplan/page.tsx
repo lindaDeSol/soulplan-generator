@@ -12,10 +12,10 @@ export default function SoulplanPage() {
   const dominantNumber = useAppStore((state) => state.dominantNumber);
 
   useEffect(() => {
-    track("page_view", {
-      page: window.location.pathname,
-      userId: fullname,
-    });
+    const newUrl = `${window.location.pathname}?userId=${fullname}`;
+
+    // URL mit User-ID tracken
+    track("page_view", { page: newUrl });
   }, []);
 
   return (
