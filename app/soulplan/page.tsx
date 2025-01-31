@@ -1,12 +1,18 @@
 "use client";
 
 import { useAppStore } from "../store/useAppStore";
+import { track } from "@vercel/analytics";
 
 export default function SoulplanPage() {
   const fullname = useAppStore((state) => state.fullname);
   const processedSums = useAppStore((state) => state.processedSums);
   const soulNumber = useAppStore((state) => state.soulNumber);
   const dominantNumber = useAppStore((state) => state.dominantNumber);
+
+  track("page_view", {
+    page: window.location.pathname,
+    userId: fullname,
+  });
 
   return (
     <main>
