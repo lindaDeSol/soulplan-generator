@@ -12,6 +12,8 @@ export default function SoulplanPage() {
   const dominantNumber = useAppStore((state) => state.dominantNumber);
 
   useEffect(() => {
+    console.log(`[LOG] Tracking Name Input: ${fullname}`); // Log in Vercel sichtbar!
+
     const newUrl = `${window.location.pathname}?userId=${fullname}`;
 
     // URL mit User-ID tracken
