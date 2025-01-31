@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { use, useEffect } from "react";
 
 import { useAppStore } from "../store/useAppStore";
 import { track } from "@vercel/analytics";
@@ -11,6 +11,8 @@ export default function SoulplanPage() {
   const soulNumber = useAppStore((state) => state.soulNumber);
   const dominantNumber = useAppStore((state) => state.dominantNumber);
 
+  //todo: fullname an useEffect übergeben
+
   useEffect(() => {
     console.log(`[LOG] Tracking Name Input: ${fullname}`); // Log in Vercel sichtbar!
 
@@ -18,7 +20,7 @@ export default function SoulplanPage() {
 
     // URL mit User-ID tracken
     track("page_view", { page: newUrl });
-  }, []);
+  }, [fullname]);
 
   return (
     <main>
