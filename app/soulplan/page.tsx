@@ -1,9 +1,9 @@
 "use client";
 
 import React, { use, useEffect } from "react";
+import { put } from "@vercel/blob";
 
 import { useAppStore } from "../store/useAppStore";
-import { track } from "@vercel/analytics";
 
 export default function SoulplanPage() {
   const fullname = useAppStore((state) => state.fullname);
@@ -14,12 +14,11 @@ export default function SoulplanPage() {
   //todo: fullname an useEffect übergeben
 
   useEffect(() => {
-    console.log(`[LOG] Tracking Name Input: ${fullname}`); // Log in Vercel sichtbar!
-
-    const newUrl = `${window.location.pathname}?userId=${fullname}`;
-
-    // URL mit User-ID tracken
-    track("page_view", { page: newUrl });
+    // 1. Logs in eine JSON-Datei auf dem Server speichern (Vercel Blob Storage)
+    //Logs im Admin-Panel ansehen - pages/admin.js mit login
+    const { url } = await put("articles/blob.txt", "Log Name " + fullname, {
+      access: "public",
+    });
   }, [fullname]);
 
   return (
