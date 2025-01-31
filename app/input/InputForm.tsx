@@ -30,7 +30,7 @@ export function InputForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fullname: "Linda Formumm",
+      fullname: useAppStore.getState().fullname || "",
     },
   });
 

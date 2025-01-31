@@ -212,7 +212,7 @@ export const useAppStore = create<StoreState>((set, get) => ({
       dominantNumber: dominantNumber,
     });
 
-    console.log("Summen:", get().processedSums);
-    console.log("Seelenplan-Summe Gesamt:", get().soulNumber);
+    //console.log("Summen:", get().processedSums);
+    //console.log("Seelenplan-Summe Gesamt:", get().soulNumber);
   },
 }));
