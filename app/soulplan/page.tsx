@@ -1,8 +1,5 @@
 "use client";
 
-import React, { use, useEffect } from "react";
-import { put } from "@vercel/blob";
-
 import { useAppStore } from "../store/useAppStore";
 
 export default function SoulplanPage() {
@@ -10,16 +7,6 @@ export default function SoulplanPage() {
   const processedSums = useAppStore((state) => state.processedSums);
   const soulNumber = useAppStore((state) => state.soulNumber);
   const dominantNumber = useAppStore((state) => state.dominantNumber);
-
-  //todo: fullname an useEffect übergeben
-
-  useEffect(() => {
-    // 1. Logs in eine JSON-Datei auf dem Server speichern (Vercel Blob Storage)
-    //Logs im Admin-Panel ansehen - pages/admin.js mit login
-    const { url } = await put("articles/blob.txt", "Log Name " + fullname, {
-      access: "public",
-    });
-  }, [fullname]);
 
   return (
     <main>

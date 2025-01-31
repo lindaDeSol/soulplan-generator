@@ -15,7 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { track } from "@vercel/analytics";
+import { put } from "@vercel/blob";
 
 const formSchema = z.object({
   fullname: z.string().min(2, {
@@ -42,7 +42,9 @@ export function InputForm() {
 
     // tracke custom event
     const userInput = values.fullname;
-    track("button_click", { userInput });
+    const { url } = await put("articles/blob.txt", "Log Name " + userInput, {
+      access: "public",
+    });
 
     await router.push("/soulplan");
   }
