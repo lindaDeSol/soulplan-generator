@@ -18,6 +18,7 @@ interface StoreState {
   dominantNumber: number;
   setFullname: (name: string) => void;
   calculateSoulPlan: () => void;
+  getSoulPlanExplanations: () => void;
 }
 
 export const useAppStore = create<StoreState>((set, get) => ({
@@ -214,5 +215,21 @@ export const useAppStore = create<StoreState>((set, get) => ({
 
     //console.log("Summen:", get().processedSums);
     //console.log("Seelenplan-Summe Gesamt:", get().soulNumber);
+  },
+  getSoulPlanExplanations: () => {
+    // json aus dem Kindle Buch herauskopieren und in .env.local als Umgebungsvariabke hinterlegen
+    // z.B.: DATASET_JSON=[{"id":1,"name":"Datensatz A","value":100},{"id":2,"name":"Datensatz B","value":200}]
+
+    // API-Route zum Abrufen der JSON-Daten erstellen
+    // in pages/api/dataset.js:
+
+    //  Umgebungsvariable in Vercel speichern
+    // Gehe zu Vercel → Settings → Environment Variables.
+
+    //Daten im Frontend abrufen
+    // im store mit useEffect und fetch die Daten abrufen
+    // diese kann ich dann auf der Page verwenden
+
+    console.log("Soulplan Explanations");
   },
 }));

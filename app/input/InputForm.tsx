@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { track } from "@vercel/analytics";
 
 const formSchema = z.object({
   fullname: z.string().min(2, {
@@ -38,6 +39,11 @@ export function InputForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setFullname(values.fullname);
     calculateSoulPlan();
+
+    // tracke custom event
+    const userInput = values.fullname;
+    track("button_click", { userInput });
+
     await router.push("/soulplan");
   }
 
