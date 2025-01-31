@@ -1,5 +1,7 @@
 "use client";
 
+import React, { useEffect } from "react";
+
 import { useAppStore } from "../store/useAppStore";
 import { track } from "@vercel/analytics";
 
@@ -9,10 +11,12 @@ export default function SoulplanPage() {
   const soulNumber = useAppStore((state) => state.soulNumber);
   const dominantNumber = useAppStore((state) => state.dominantNumber);
 
-  track("page_view", {
-    page: window.location.pathname,
-    userId: fullname,
-  });
+  useEffect(() => {
+    track("page_view", {
+      page: window.location.pathname,
+      userId: fullname,
+    });
+  }, []);
 
   return (
     <main>
