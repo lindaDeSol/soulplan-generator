@@ -2,8 +2,9 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { z } from "zod";
-
+import { useAppStore } from "../store/useAppStore";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -11,7 +12,6 @@ import {
   FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -23,19 +23,22 @@ const formSchema = z.object({
 });
 
 export function InputForm() {
-  // 1. Define your form.
+  const setFullname = useAppStore((state) => state.setFullname);
+  const calculateSoulPlan = useAppStore((state) => state.calculateSoulPlan);
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fullname: "",
+      fullname: "Linda Formumm",
     },
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setFullname(values.fullname);
+    calculateSoulPlan();
+    await router.push("/soulplan");
   }
 
   return (
@@ -59,7 +62,8 @@ export function InputForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+
+        <Button type="submit">Berechnen</Button>
       </form>
     </Form>
   );
