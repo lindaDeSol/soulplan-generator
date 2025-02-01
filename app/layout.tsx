@@ -38,7 +38,7 @@ export default function RootLayout({
     <html lang="de">
       <body className={inter.className}>
         <Header />
-        <main className="max-w-[700px] mx-auto">{children}</main>
+        <main className="max-w-[770px] mx-auto">{children}</main>
         <Analytics />
       </body>
     </html>

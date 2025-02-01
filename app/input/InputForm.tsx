@@ -26,6 +26,9 @@ const formSchema = z.object({
 export function InputForm() {
   const setFullname = useAppStore((state) => state.setFullname);
   const calculateSoulPlan = useAppStore((state) => state.calculateSoulPlan);
+  const getSoulPlanExplanations = useAppStore(
+    (state) => state.getSoulPlanExplanations
+  );
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -39,6 +42,7 @@ export function InputForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setFullname(values.fullname);
     calculateSoulPlan();
+    getSoulPlanExplanations();
 
     //tracking
     const userInput = values.fullname;
