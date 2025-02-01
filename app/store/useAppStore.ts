@@ -15,7 +15,7 @@ interface StoreState {
     reduced: number;
     singleDigit: number;
   };
-  dominantNumber: number;
+  dominantNumbers: number[];
   setFullname: (name: string) => void;
   calculateSoulPlan: () => void;
   getSoulPlanExplanations: () => void;
@@ -26,7 +26,7 @@ export const useAppStore = create<StoreState>((set, get) => ({
   isShortName: false,
   processedSums: [],
   soulNumber: { label: "", reduced: 0, singleDigit: 0 },
-  dominantNumber: 0,
+  dominantNumbers: [],
   setFullname: (name) => set({ fullname: name }),
 
   // Function to calculate the soul plan
@@ -194,13 +194,16 @@ export const useAppStore = create<StoreState>((set, get) => ({
 
     //console.log("counts", counts);
 
-    // Find the dominant number (key with at least 4 occurrences)
-    const dominantNumber = !get().isShortName
-      ? parseInt(
-          Object.entries(counts).find(([_, count]) => count >= 4)?.[0] || "0",
-          10
-        )
-      : 0;
+    // Find the dominant numbers (keys with at least 4 occurrences)
+    function findKeysWithAtLeastFourOccurrences(counts: {
+      [key: string]: number;
+    }): string[] {
+      return Object.keys(counts).filter((key) => counts[key] >= 4);
+    }
+
+    const dominantNumbers = !get().isShortName
+      ? findKeysWithAtLeastFourOccurrences(counts).map((num) => parseInt(num))
+      : [0];
 
     // Update state
     set({
@@ -210,7 +213,7 @@ export const useAppStore = create<StoreState>((set, get) => ({
         reduced: totalReduced,
         singleDigit: totalSingleDigit,
       },
-      dominantNumber: dominantNumber,
+      dominantNumbers: dominantNumbers,
     });
 
     //console.log("Summen:", get().processedSums);
