@@ -40,11 +40,9 @@ export function InputForm() {
     setFullname(values.fullname);
     calculateSoulPlan();
 
-    const token = process.env.NEXT_PUBLIC_BLOB_READ_WRITE_TOKEN;
-    console.log("Token:", token);
-
+    //tracking
     const userInput = values.fullname;
-    const { url } = await put("articles/blob.txt", "Log Name " + userInput, {
+    const { url } = await put("nameLogging/blob.txt", "Log Name " + userInput, {
       access: "public",
       token: process.env.NEXT_PUBLIC_BLOB_READ_WRITE_TOKEN,
     });
