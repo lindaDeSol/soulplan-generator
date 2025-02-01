@@ -40,10 +40,13 @@ export function InputForm() {
     setFullname(values.fullname);
     calculateSoulPlan();
 
-    // tracke custom event
+    const token = process.env.NEXT_PUBLIC_BLOB_READ_WRITE_TOKEN;
+    console.log("Token:", token);
+
     const userInput = values.fullname;
     const { url } = await put("articles/blob.txt", "Log Name " + userInput, {
       access: "public",
+      token: process.env.NEXT_PUBLIC_BLOB_READ_WRITE_TOKEN,
     });
 
     await router.push("/soulplan");
